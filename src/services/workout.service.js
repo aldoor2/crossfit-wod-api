@@ -1,5 +1,9 @@
+import WorkoutModel from '../database/Workout.js';
 
-const getAllWorkouts = () => { return }
+const getAllWorkouts = () => {
+  const allWorkouts = WorkoutModel.getAllWorkouts()
+  return allWorkouts
+}
 const getOneWorkout = (workoutId) => { return }
 const createNewWorkout = () => { return }
 const deleteOneWorkout = (workoutId) => { return }

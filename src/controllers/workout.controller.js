@@ -2,7 +2,7 @@ import workoutService from '../services/workout.service.js'
 
 export const getAllWorkouts = (req, res) => {
   const allWorkouts = workoutService.getAllWorkouts()
-  res.send('getting all workouts')
+  res.send({ status: 'OK', data: allWorkouts })
 }
 
 export const getOneWorkout = (req, res) => {
