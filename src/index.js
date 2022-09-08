@@ -1,11 +1,11 @@
 import express from 'express'
 
+import v1WorkoutRouter from './v1/routes/workout.routes.js'
+
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>')
-})
+app.use('/api/v1/workouts', v1WorkoutRouter)
 
 app.listen(PORT)
-console.log('🚀 Server is running on port', PORT)
+console.log('🚀 Server is running on the port', PORT)
