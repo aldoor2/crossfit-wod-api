@@ -25,17 +25,19 @@ const createNewWorkout = (newWorkout) => {
   return createdWorkout
 }
 
-const deleteOneWorkout = (workoutId) => { return }
-
 const updateOneWorkout = (workoutId, changes) => {
   const updatedWorkout = Workout.updateOneWorkout(workoutId, changes)
   return updatedWorkout
+}
+
+const deleteOneWorkout = (workoutId) => {
+  Workout.deleteOneWorkout(workoutId)
 }
 
 export default {
   getAllWorkouts,
   getOneWorkout,
   createNewWorkout,
-  deleteOneWorkout,
-  updateOneWorkout
+  updateOneWorkout,
+  deleteOneWorkout
 }
