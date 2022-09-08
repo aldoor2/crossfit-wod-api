@@ -1,13 +1,16 @@
 import { v4 as uuid } from 'uuid'
 
-import WorkoutModel from '../database/Workout.js';
+import Workout from '../database/Workout.js';
 
 const getAllWorkouts = () => {
-  const allWorkouts = WorkoutModel.getAllWorkouts()
+  const allWorkouts = Workout.getAllWorkouts()
   return allWorkouts
 }
 
-const getOneWorkout = (workoutId) => { return }
+const getOneWorkout = (workoutId) => {
+  const workout = Workout.getOneWorkout(workoutId)
+  return workout
+}
 
 const createNewWorkout = (newWorkout) => {
   const workoutToInsert = {
@@ -16,7 +19,7 @@ const createNewWorkout = (newWorkout) => {
     createAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
   }
 
-  const createdWorkout = WorkoutModel.createNewWorkout(workoutToInsert)
+  const createdWorkout = Workout.createNewWorkout(workoutToInsert)
 
   return createdWorkout
 }

@@ -6,8 +6,13 @@ export const getAllWorkouts = (req, res) => {
 }
 
 export const getOneWorkout = (req, res) => {
-  const workout = getOneWorkout(req.params.workoutId)
-  res.send(`getting workout ${req.params.workoutId}`)
+  const { params: { workoutId } } = req
+  console.log(workoutId)
+
+  if (!workoutId) return
+
+  const workout = workoutService.getOneWorkout(workoutId)
+  res.send({ status: 'OK', data: workout })
 }
 
 export const createNewWorkout = (req, res) => {
