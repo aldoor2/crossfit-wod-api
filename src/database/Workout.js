@@ -14,7 +14,7 @@ const getOneWorkout = (workoutId) => {
     const workout = DB.workouts.find(workout => workout.id === workoutId)
     if (!workout) {
       throw {
-        status: 500,
+        status: 404,
         message: `Can't find workout with the id '${workoutId}'`
       }
     }
@@ -54,7 +54,7 @@ const updateOneWorkout = (workoutId, changes) => {
     const indexForUpdate = DB.workouts.findIndex(workout => workout.id === workoutId)
     if (indexForUpdate === -1) {
       throw {
-        status: 400,
+        status: 404,
         message: `Can't find workout with the id '${workoutId}'`,
       }
     }
@@ -75,16 +75,14 @@ const updateOneWorkout = (workoutId, changes) => {
 
 const deleteOneWorkout = (workoutId) => {
   try {
-    const indexForDelete = DB.workouts.findIndex(workout => workout.id === workoutId)
-
-    if (indexForDelete === -1) {
+    const indexForDeletion = DB.workouts.findIndex(workout => workout.id === workoutId)
+    if (indexForDeletion === -1) {
       throw {
-        status: 400,
+        status: 404,
         message: `Can't find workout with the id '${workoutId}'`
       }
     }
-
-    DB.workouts.splice(indexForDelete, 1)
+    DB.workouts.splice(indexForDeletion, 1)
     saveToDatabase(DB)
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message || error }
