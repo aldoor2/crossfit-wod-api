@@ -1,12 +1,29 @@
+import { v4 as uuid } from 'uuid'
+
 import WorkoutModel from '../database/Workout.js';
 
 const getAllWorkouts = () => {
   const allWorkouts = WorkoutModel.getAllWorkouts()
   return allWorkouts
 }
+
 const getOneWorkout = (workoutId) => { return }
-const createNewWorkout = () => { return }
+
+const createNewWorkout = (newWorkout) => {
+
+  const workoutToInsert = {
+    ...newWorkout,
+    id: uuid(),
+    createAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
+  }
+
+  WorkoutModel.createNewWorkout(workoutToInsert)
+
+  return workoutToInsert
+}
+
 const deleteOneWorkout = (workoutId) => { return }
+
 const updateOneWorkout = (workoutId, newFields) => { return }
 
 export default {

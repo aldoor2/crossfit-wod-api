@@ -11,8 +11,22 @@ export const getOneWorkout = (req, res) => {
 }
 
 export const createNewWorkout = (req, res) => {
-  const createdWorkout = workoutService.createNewWorkout()
-  res.send('creating new workout')
+  const { body } = req
+
+  if (!body.name || !body.mode || !body.equipment || !body.exercises || !body.trainerTips) {
+    return
+  }
+
+  const newWorkout = {
+    name: body.name,
+    mode: body.mode,
+    equipment: body.equipment,
+    exercises: body.exercises,
+    trainerTips: body.trainerTips
+  }
+
+  const createdWorkout = workoutService.createNewWorkout(newWorkout)
+  res.status(201).send({ status: 'OK', data: createdWorkout })
 }
 
 export const deleteOneWorkout = (req, res) => {
