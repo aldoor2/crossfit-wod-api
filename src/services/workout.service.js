@@ -10,16 +10,15 @@ const getAllWorkouts = () => {
 const getOneWorkout = (workoutId) => { return }
 
 const createNewWorkout = (newWorkout) => {
-
   const workoutToInsert = {
     ...newWorkout,
     id: uuid(),
     createAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
   }
 
-  WorkoutModel.createNewWorkout(workoutToInsert)
+  const createdWorkout = WorkoutModel.createNewWorkout(workoutToInsert)
 
-  return workoutToInsert
+  return createdWorkout
 }
 
 const deleteOneWorkout = (workoutId) => { return }

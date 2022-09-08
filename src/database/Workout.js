@@ -4,12 +4,13 @@ import { saveToDatabase } from './utils.js'
 const getAllWorkouts = () => DB.workouts
 
 const createNewWorkout = (newWorkout) => {
-  const isAlreadyAdded = DB.workouts.findIndex(workout => (workout.name === newWorkout.name))
+  const isAlreadyAdded = DB.workouts.findIndex(workout => (workout.name === newWorkout.name)) > -1
 
-  if (!isAlreadyAdded) return
+  if (isAlreadyAdded) return
 
   DB.workouts.push(newWorkout)
   saveToDatabase(DB)
+  return newWorkout
 }
 
 export default {

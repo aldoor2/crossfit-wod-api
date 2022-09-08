@@ -84,6 +84,27 @@
       ],
       "id": "1ed7bbce-f3b8-4735-b564-c1a6fdb693d5",
       "createAt": "9/8/2022, 5:35:27 AM"
+    },
+    {
+      "name": "Hallen Door",
+      "mode": "AMRAP 20",
+      "equipment": [
+        "rack",
+        "barbell",
+        "abmat"
+      ],
+      "exercises": [
+        "15 toes to bars",
+        "10 thrusters",
+        "30 abmat sit-ups"
+      ],
+      "trainerTips": [
+        "Split your toes to bars into two sets maximum",
+        "Go unbroken on the thrusters",
+        "Take the abmat sit-ups as a chance to normalize your breath"
+      ],
+      "id": "eca37a01-0f0e-476f-86b2-4b3fc8fb93ab",
+      "createAt": "9/8/2022, 5:46:12 AM"
     }
   ]
 }
