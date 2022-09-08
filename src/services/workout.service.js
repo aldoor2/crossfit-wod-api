@@ -16,7 +16,8 @@ const createNewWorkout = (newWorkout) => {
   const workoutToInsert = {
     ...newWorkout,
     id: uuid(),
-    createAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
+    createAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' }),
+    updateAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
   }
 
   const createdWorkout = Workout.createNewWorkout(workoutToInsert)
@@ -26,7 +27,10 @@ const createNewWorkout = (newWorkout) => {
 
 const deleteOneWorkout = (workoutId) => { return }
 
-const updateOneWorkout = (workoutId, newFields) => { return }
+const updateOneWorkout = (workoutId, changes) => {
+  const updatedWorkout = Workout.updateOneWorkout(workoutId, changes)
+  return updatedWorkout
+}
 
 export default {
   getAllWorkouts,

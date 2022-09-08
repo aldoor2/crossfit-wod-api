@@ -35,11 +35,16 @@ export const createNewWorkout = (req, res) => {
 }
 
 export const deleteOneWorkout = (req, res) => {
-  workoutService.deleteOneWorkout(req.params.workoutId)
-  res.send(`deleting workout ${req.params.workoutId}`)
+  const { params: { workoutId } } = req
+  workoutService.deleteOneWorkout(workoutId)
+  res.send(`deleting workout ${workoutId}`)
 }
 
 export const updateOneWorkout = (req, res) => {
-  const updatedWorkout = workoutService.updateOneWorkout(req.params.workoutId, req.body)
-  res.send(`updating workout ${req.params.workoutId}`)
+  const { body, params: { workoutId } } = req
+
+  if (!workoutId) return
+
+  const updatedWorkout = workoutService.updateOneWorkout(workoutId, body)
+  res.send({ status: 'OK', data: updatedWorkout })
 }

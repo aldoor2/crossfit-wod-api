@@ -21,8 +21,25 @@ const createNewWorkout = (newWorkout) => {
   return newWorkout
 }
 
+const updateOneWorkout = (workoutId, changes) => {
+  const indexForUpdate = DB.workouts.findIndex(workout => workout.id === workoutId)
+
+  if (indexForUpdate === -1) return
+
+  const updatedWorkout = {
+    ...DB.workouts[indexForUpdate],
+    ...changes,
+    updateAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
+  }
+
+  DB.workouts[indexForUpdate] = updatedWorkout
+  saveToDatabase(DB)
+  return updatedWorkout
+}
+
 export default {
   getAllWorkouts,
   getOneWorkout,
-  createNewWorkout
+  createNewWorkout,
+  updateOneWorkout
 }
