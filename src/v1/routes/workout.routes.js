@@ -1,20 +1,16 @@
 import { Router } from 'express'
 
-import {
-  getAllWorkouts,
-  getOneWorkout,
-  createNewWorkout,
-  deleteOneWorkout,
-  updateOneWorkout
-} from '../../controllers/workout.controller.js'
+import workoutController from '../../controllers/workout.controller.js'
+import recordController from '../../controllers/record.controller.js'
 
 const router = Router()
 
 router
-  .get('/', getAllWorkouts)
-  .get('/:workoutId', getOneWorkout)
-  .post('/', createNewWorkout)
-  .delete('/:workoutId', deleteOneWorkout)
-  .patch('/:workoutId', updateOneWorkout)
+  .get('/', workoutController.getAllWorkouts)
+  .get('/:workoutId', workoutController.getOneWorkout)
+  .get('/:workoutId/records', recordController.getRecordForWorkout)
+  .post('/', workoutController.createNewWorkout)
+  .delete('/:workoutId', workoutController.deleteOneWorkout)
+  .patch('/:workoutId', workoutController.updateOneWorkout)
 
 export default router

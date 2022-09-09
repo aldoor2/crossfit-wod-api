@@ -1,6 +1,6 @@
 import workoutService from '../services/workout.service.js'
 
-export const getAllWorkouts = (req, res) => {
+const getAllWorkouts = (req, res) => {
   try {
     const allWorkouts = workoutService.getAllWorkouts()
     res.send({ status: 'OK', data: allWorkouts })
@@ -11,7 +11,7 @@ export const getAllWorkouts = (req, res) => {
   }
 }
 
-export const getOneWorkout = (req, res) => {
+const getOneWorkout = (req, res) => {
   const { params: { workoutId } } = req
   console.log(workoutId)
 
@@ -35,7 +35,7 @@ export const getOneWorkout = (req, res) => {
   }
 }
 
-export const createNewWorkout = (req, res) => {
+const createNewWorkout = (req, res) => {
   const { body } = req
 
   if (
@@ -73,7 +73,7 @@ export const createNewWorkout = (req, res) => {
   }
 }
 
-export const deleteOneWorkout = (req, res) => {
+const deleteOneWorkout = (req, res) => {
   const {
     params: { workoutId }
   } = req
@@ -97,7 +97,7 @@ export const deleteOneWorkout = (req, res) => {
   }
 }
 
-export const updateOneWorkout = (req, res) => {
+const updateOneWorkout = (req, res) => {
   const { body, params: { workoutId } } = req
 
   if (!workoutId) {
@@ -119,4 +119,12 @@ export const updateOneWorkout = (req, res) => {
       .status(error?.status || 500)
       .send({ status: 'FAILED', data: { error: error?.message || error } })
   }
+}
+
+export default {
+  getAllWorkouts,
+  getOneWorkout,
+  createNewWorkout,
+  deleteOneWorkout,
+  updateOneWorkout
 }
