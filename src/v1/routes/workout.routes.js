@@ -2,7 +2,6 @@ import { Router } from 'express'
 
 import workoutController from '../../controllers/workout.controller.js'
 import recordController from '../../controllers/record.controller.js'
-
 const router = Router()
 
 router

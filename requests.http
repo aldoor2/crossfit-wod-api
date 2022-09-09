@@ -1,0 +1,19 @@
+## Use RestClient extension to use this file
+
+# Create a New Member
+POST http://localhost:3000/api/v1/members
+Content-Type: application/json
+
+{
+  "name": "Jason Miller 3",
+  "gender": "male",
+  "dateOfBirth": "12/04/1991",
+  "email": "jason3@mail.com",
+  "password": "tester"
+} 
+###
+
+# Get Member
+
+GET http://localhost:3000/api/v1/members/4f6de878-b393-436d-bc0c-fea1d4a720e2
+Content-Type: application/json
