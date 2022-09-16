@@ -1,11 +1,25 @@
 import DB from './db.json' assert {type: "json"}
 import { saveToDatabase } from './utils.js'
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (filterParams) => {
   try {
-    return DB.workouts
+    let workouts = DB.workouts
+
+    if (filterParams.mode) {
+      return DB.workouts.filter((workout) =>
+        workout.mode.toLowerCase().includes(filterParams.mode.toLowerCase())
+      )
+    }
+
+    if (filterParams.equipment) {
+      return DB.workouts.filter((workout) =>
+        workout.equipment.includes(filterParams.equipment.toLowerCase())
+      )
+    }
+
+    return workouts
   } catch (error) {
-    throw error
+    throw { status: 500, message: error }
   }
 }
 

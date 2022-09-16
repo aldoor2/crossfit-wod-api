@@ -1,8 +1,12 @@
 import workoutService from '../services/workout.service.js'
 
 const getAllWorkouts = (req, res) => {
+  const {
+    query: { mode, equipment, length }
+  } = req
+
   try {
-    const allWorkouts = workoutService.getAllWorkouts()
+    const allWorkouts = workoutService.getAllWorkouts({ mode, equipment, length })
     res.send({ status: 'OK', data: allWorkouts })
   } catch (error) {
     res

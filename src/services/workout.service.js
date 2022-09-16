@@ -2,9 +2,9 @@ import { v4 as uuid } from 'uuid'
 
 import Workout from '../database/Workout.js';
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (filterParams) => {
   try {
-    const allWorkouts = Workout.getAllWorkouts()
+    const allWorkouts = Workout.getAllWorkouts(filterParams)
     return allWorkouts
   } catch (error) {
     throw error
