@@ -6,20 +6,31 @@ const getAllWorkouts = (filterParams) => {
     let workouts = DB.workouts
 
     if (filterParams.mode) {
-      return DB.workouts.filter((workout) =>
+      workouts = DB.workouts.filter((workout) =>
         workout.mode.toLowerCase().includes(filterParams.mode.toLowerCase())
       )
     }
 
     if (filterParams.equipment) {
-      return DB.workouts.filter((workout) =>
+      workouts = DB.workouts.filter((workout) =>
         workout.equipment.includes(filterParams.equipment.toLowerCase())
       )
     }
 
+    if (filterParams.length && workouts.length > 0) {
+      if (Number(filterParams.length) < 0) {
+        throw {
+          status: 400,
+          message: `Filter parameter 'lenght' cannot be less than zero`
+        }
+      }
+
+      workouts.length = Number(filterParams.length)
+    }
+
     return workouts
   } catch (error) {
-    throw { status: 500, message: error }
+    throw { status: error?.status || 500, message: error?.message || error }
   }
 }
 
