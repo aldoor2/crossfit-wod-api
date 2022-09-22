@@ -2,6 +2,7 @@ import express from 'express'
 
 import v1WorkoutRouter from './v1/routes/workout.routes.js'
 import v1MemberRouter from './v1/routes/member.routes.js'
+import { swaggerDocs as v1SwaggerDocs } from './v1/swagger.js'
 
 // Initialize
 const app = express()
@@ -14,5 +15,7 @@ app.use(express.json())
 app.use('/api/v1/workouts', v1WorkoutRouter)
 app.use('/api/v1/members', v1MemberRouter)
 
-app.listen(PORT)
-console.log('🚀 Server is running on the port', PORT)
+app.listen(PORT, () => {
+  console.log('🚀 Server is running on the port', PORT)
+  v1SwaggerDocs(app, PORT)
+})
